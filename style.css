@@ -42,6 +42,11 @@ header p {
   margin-bottom: 30px;
 }
 
+.map-section {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 .mirror-text {
   font-size: 2.5rem;
   color: rgb(232, 232, 235);
@@ -186,12 +191,19 @@ footer {
   aspect-ratio: 16/9;
 }
 
-/* Responsive cho mobile nhỏ */
 @media screen and (max-width: 480px) {
-  .floating-box {
-    width: 90vw;
-    font-size: 14px;
-    padding: 10px;
+  .floating-box img {
+    aspect-ratio: 4/3;
+  }
+
+  .map-marker {
+    width: 24px;
+    height: 24px;
+  }
+
+  .map-marker::after {
+    width: 10px;
+    height: 10px;
   }
 }
 
@@ -282,4 +294,33 @@ footer {
 
 ul {
  padding-left: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  nav button {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  header h1 {
+    font-size: 36px;
+  }
+
+  header p {
+    font-size: 20px;
+  }
+
+  .quiz-box, #lesson-section {
+    padding: 20px;
+    max-width: 90%;
+  }
+
+  .lesson-buttons {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .lesson-buttons button {
+    flex: 1 1 100%;
+  }
 }
