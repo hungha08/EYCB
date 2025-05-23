@@ -18,6 +18,7 @@
     <button onclick="showSection('quiz-section')">Trò chơi</button>
     <button onclick="showSection('lesson-section')">Bài học  </button>
   </nav>
+
   </main>
    <section id="map-section" class="section" >
       <div class="map-title">
@@ -27,8 +28,6 @@
 
      <div class="map-section" style="position: relative;" >
        <img src="images/ban-do-caobang.png" style="max-width: 100%; height: auto;" />
-
-       
 
        <!-- Marker: Thác Bản Giốc -->
          <div class="map-marker"
@@ -124,14 +123,13 @@
          <div class="map-marker" 
           style="position: absolute; top: 25.32%; left: 63.90%; " 
           onclick="showFloatingInfo('cua-khau-tra-linh', this)"></div>
-
-       <!-- Hộp thông tin nổi -->
-       <div id="floating-info" class="floating-box" style="display: none;">
-         <div id="floating-text">Đây là thông tin nổi!</div>
-         <img id="floating-image" src="" alt="ảnh địa danh" />
-       </div>
-     </div>
-   </section>
+      </div>
+      <!-- Hộp thông tin nổi -->
+        <div id="floating-info" class="floating-box" style="display: none;">
+           <div id="floating-text">Đây là thông tin nổi!</div>
+          <img id="floating-image" src="" alt="ảnh địa danh" style="display: none; width: 100%; border-radius: 10px; margin-top: 10px;" />
+        </div>
+   </section> 
    
    <section id="quiz-section" class="section"style="display:none;">
      <div class="quiz-box">

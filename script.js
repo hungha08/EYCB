@@ -124,7 +124,7 @@ function showFloatingInfo(locationId, markerElement) {
   }
 
   infoText.innerText = text;
-
+   
   if (imageSrc) {
     infoImage.src = imageSrc;
     infoImage.style.display = "block";
@@ -132,23 +132,29 @@ function showFloatingInfo(locationId, markerElement) {
     infoImage.style.display = "none";
   }
 
-  // Tính vị trí ngay
   infoBox.style.display = "block";
 
+  // ✅ Tính vị trí theo marker
   const boxWidth = infoBox.offsetWidth;
   const boxHeight = infoBox.offsetHeight;
 
-  const markerTop = markerElement.offsetTop;
-  const markerLeft = markerElement.offsetLeft;
+  const markerRect = markerElement.getBoundingClientRect();
+  const pageScrollTop = window.scrollY;
+  const pageScrollLeft = window.scrollX;
 
-  let top = markerTop - boxHeight - 10;
-  let left = markerLeft + (markerElement.offsetWidth / 2) - (boxWidth / 2);
+  const markerTopY = markerRect.top + pageScrollTop;
+  const markerCenterX = markerRect.left + pageScrollLeft + markerElement.offsetWidth / 2;
 
-  const container = document.querySelector(".map-section");
-  const containerWidth = container.clientWidth;
+  let top = markerTopY - boxHeight - 20;
+  let left = markerCenterX - boxWidth / 2;
 
-  if (left < 0) left = 10;
-  if (left + boxWidth > containerWidth) left = containerWidth - boxWidth - 10;
+  // Không tràn trái/phải khỏi màn hình
+  const pageWidth = document.documentElement.clientWidth;
+  if (left < 10) left = 10;
+  if (left + boxWidth > pageWidth) left = pageWidth - boxWidth - 10;
+
+  // ✅ Không cho tràn xuống dưới marker
+  if (top < 0) top = 10;
 
   infoBox.style.top = `${top}px`;
   infoBox.style.left = `${left}px`;
@@ -156,8 +162,7 @@ function showFloatingInfo(locationId, markerElement) {
   // Click ra ngoài để ẩn box
   if (!infoBoxInitialized) {
     document.addEventListener("click", function (e) {
-      const infoBox = document.getElementById("floating-info");
-      if (!infoBox.contains(e.target) && !e.target.classList.contains("map-marker")) {
+     if (!infoBox.contains(e.target) && !e.target.classList.contains("map-marker")) {
         infoBox.style.display = "none";
       }
     });
