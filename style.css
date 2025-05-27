@@ -199,7 +199,12 @@ footer {
 }
 
 @media screen and (max-width: 480px) {
-.floating-box img {
+   body {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .floating-box img {
     aspect-ratio: 4/3;
   }
 
